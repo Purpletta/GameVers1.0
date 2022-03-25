@@ -25,6 +25,7 @@ namespace Game
                 else if (choice == "4") { hero.Intelligence += 1; }
                 Console.WriteLine("You have become stronger, but so have your enemies...");
                 enemy.AttackPower += 2;enemy.MaxHealth += 2; enemy.Healh += 2; enemy.ExpAmount += 100; enemy.Armor += 1;
+                hero.Exp=0;
             }
             else { return; }
         
