@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,7 +50,7 @@ namespace Game
                 string actionChoise = "0";
                 do
                 {    Console.WriteLine("Press 1 for Attack, press 2 for ability, press 3 for using healing poition, press 4 for using mana poition, press 5 for overview");
-                    if (hero.HrsManaAmount<ability.ManaCost) { Console.WriteLine("Be careful, you don`t have enough mana for you ability");}
+                    
                     actionChoise = (Console.ReadLine());
                 }
                 while (actionChoise != "1" && actionChoise != "2" && actionChoise != "3" && actionChoise != "4" && actionChoise != "5");
@@ -102,7 +102,7 @@ namespace Game
 
 
 
-                //конец боя - допилить про лвл ап( вызов функции)
+                
 
 
             }
