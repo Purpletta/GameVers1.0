@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +17,11 @@ namespace Game
             string choice = "0";
             do
             {
-                Console.WriteLine("Чтобы отдохнуть - нажмите 1. Чтобы посмотреть список предметов - нажмите 2. Чтобы выйти из игры - 3. Бой с боссом - 4. 5 - обратно в бой");
+                Console.WriteLine("Чтобы отдохнуть - нажмите 1. Чтобы посмотреть список предметов - нажмите 2. Бой с боссом - 4. 5 - обратно в бой");
                 choice = Console.ReadLine();
 
 
-            } while (choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice!="5");
+            } while (choice != "1" && choice != "2"  && choice != "4" && choice!="5");
             if (choice == "1")
             {
                 rest.ReadJokes();
@@ -50,44 +50,57 @@ namespace Game
                         itemChoice = Console.ReadLine();
 
                     }
-                    while (itemChoice != "1" && itemChoice != "2" && itemChoice != "3");
-                    if (itemChoice == "1" && hero.Gold >= 12)
-                    {
-                        Console.WriteLine("Titan`s Armor is yours");
-                        hero.MaxArmor += 5;
-                        hero.HrsArmour += 5;
+                    while (itemChoice != "1" && itemChoice != "2" && itemChoice != "3" && itemChoice != "4");
+                    if (itemChoice == "1") { 
+                        if (hero.Gold >= 12)
+                        {
+                            Console.WriteLine("Titan`s Armor is yours");
+                            hero.MaxArmor += 5;
+                            hero.HrsArmour += 5;
+                            hero.Gold -= 12;
+                        }   else { Console.WriteLine("You don`t have enough money for this item"); camp.CampLocation(hero, campChoice); }
+                    
                     }
-                    else if (itemChoice == "2")
+                  
+                    if (itemChoice == "2")
                     {
                         Console.WriteLine("Dragon`s Tooth is yours");
                         hero.MaxHP += 4;
                         hero.HP += 4;
+                        hero.Gold -= 10;
                     }
-                    else if (itemChoice == "3" && hero.Gold >= 15)
+                    if (itemChoice == "3")
                     {
-                        Console.WriteLine("Staff of Wizardy is yours");
-                        hero.MaxMana += 7;
-                        hero.HrsManaAmount += 7;
+                        if (hero.Gold >= 15)
+                        {
+                            Console.WriteLine("Staff of Wizardy is yours");
+                            hero.MaxMana += 7;
+                            hero.HrsManaAmount += 7;
+                            hero.Gold -= 15;
 
+                        }  else { Console.WriteLine("You don`t have enough money for this item"); camp.CampLocation(hero, campChoice); }
                     }
-                    else if (itemChoice == "4" && hero.Gold >= 20)
+
+                    if (itemChoice == "4")
                     {
-                        Console.WriteLine("Dragon Slayer is yours");
-                        hero.HrsAtkPwr += 10;
-                        hero.MaxAttack += 10;
+                        if (hero.Gold >= 20)
+                        {
+                            Console.WriteLine("Dragon Slayer is yours");
+                            hero.HrsAtkPwr += 10;
+                            hero.MaxAttack += 10;
+                            hero.Gold -= 20;
 
+                        }else { Console.WriteLine("You don`t have enough money for this item"); camp.CampLocation(hero, campChoice); }
                     }
+                    
+
 
                 }
                 camp.CampLocation(hero, campChoice);
 
 
             }
-            else if (choice == "3")
-            {
-                Console.WriteLine("Thank you, bye");
-                
-            }
+           
             else if (choice == "4")
             {
                 bossFightcs.BossFigth(hero, campChoice, boss);
